@@ -1,279 +1,347 @@
-<!DOCTYPE html>
+{`<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Happy Birthday Jashuluu 💗</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+font-family:Poppins,sans-serif;
+background:linear-gradient(135deg,#ffd6e7,#f4ddff);
+overflow-x:hidden;
+color:#4b2d52;
 }
-
-body {
-    font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #ffd6e7, #f3d7ff);
-    color: #4a3150;
-    text-align: center;
-    overflow-x: hidden;
+section{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:40px 20px;
+text-align:center;
 }
-
-section {
-    min-height: 100vh;
-    padding: 60px 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.card{
+background:rgba(255,255,255,.78);
+backdrop-filter:blur(8px);
+padding:35px;
+border-radius:28px;
+max-width:820px;
+box-shadow:0 15px 35px rgba(0,0,0,.12);
 }
-
-h1 {
-    font-size: 48px;
-    color: #d63384;
-    margin-bottom: 20px;
+h1{
+font-family:Dancing Script,cursive;
+font-size:64px;
+color:#d63384;
+margin-bottom:12px;
 }
-
-h2 {
-    font-size: 34px;
-    color: #a0449b;
-    margin-bottom: 25px;
+h2{
+font-family:Dancing Script,cursive;
+font-size:42px;
+color:#b23a8a;
+margin-bottom:18px;
 }
-
-p {
-    max-width: 700px;
-    font-size: 19px;
-    line-height: 1.8;
-    margin-bottom: 25px;
+p{
+font-size:18px;
+line-height:1.8;
+margin:12px 0;
 }
-
-button {
-    border: none;
-    padding: 14px 28px;
-    border-radius: 30px;
-    background: #d63384;
-    color: white;
-    font-size: 17px;
-    cursor: pointer;
-    margin-top: 15px;
+button{
+background:#d63384;
+color:white;
+border:none;
+padding:14px 28px;
+border-radius:40px;
+font-size:17px;
+cursor:pointer;
+margin-top:18px;
+transition:.25s;
 }
-
-button:hover {
-    background: #a92368;
-    transform: scale(1.05);
+button:hover{
+transform:scale(1.05);
+background:#b62070;
 }
-
-.card {
-    background: rgba(255,255,255,0.7);
-    padding: 35px;
-    border-radius: 25px;
-    max-width: 800px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+.photo{
+width:320px;
+max-width:90%;
+border:10px solid white;
+padding:8px;
+background:white;
+border-radius:6px;
+transform:rotate(-3deg);
+box-shadow:0 10px 25px rgba(0,0,0,.2);
+margin:20px auto;
 }
-
-.photo {
-    width: 320px;
-    max-width: 90%;
-    border-radius: 25px;
-    margin: 20px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+.timeline{
+text-align:left;
+margin-top:20px;
 }
-
-.heart {
-    position: fixed;
-    font-size: 25px;
-    animation: float 6s linear infinite;
-    opacity: 0.7;
+.point{
+background:white;
+padding:16px;
+border-radius:18px;
+margin:12px 0;
+box-shadow:0 5px 15px rgba(0,0,0,.08);
 }
-
-@keyframes float {
-    from {
-        transform: translateY(100vh);
-    }
-    to {
-        transform: translateY(-10vh);
-    }
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+gap:18px;
+margin-top:20px;
 }
-
-.small {
-    font-size: 16px;
-    opacity: 0.8;
+.box{
+background:white;
+padding:22px;
+border-radius:20px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+transition:.25s;
+}
+.box:hover{
+transform:translateY(-6px);
+}
+.hide{display:none}
+.heart{
+position:fixed;
+top:-30px;
+font-size:24px;
+animation:fall linear forwards;
+pointer-events:none;
+}
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+opacity:.25;
+}
+}
+#gate{
+position:fixed;
+inset:0;
+background:linear-gradient(135deg,#ffd6e7,#f4ddff);
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999;
+}
+input{
+padding:12px;
+border-radius:12px;
+border:none;
+font-size:17px;
+width:220px;
+text-align:center;
+margin-top:15px;
 }
 </style>
 </head>
 
 <body>
 
-<!-- PAGE 1 -->
+<div id="gate">
+<div class="card">
+<div style="font-size:55px;">🔐</div>
+<h2>Only Jashuluu can enter...</h2>
+<p>Mana friendship ekkada start ayindhi?</p>
+<input id="pass" placeholder="Answer here">
+<br>
+<button onclick="openGate()">Open 💗</button>
+<p id="err" style="color:#d63384;"></p>
+</div>
+</div>
+
 <section>
-    <div class="card">
-        <div style="font-size:70px;">🎂</div>
+<div class="card">
+<div style="font-size:65px;">🎂</div>
+<h1 id="typing"></h1>
 
-        <h1>Happy Birthday, Jashuluu! 💗</h1>
+<p>Finallyyy your birthday is hereee! 🥹💗</p>
 
-        <p>
-            Finallyyy your birthday is hereee! 🥹💗
-        </p>
+<p>7th class nunchi start ayina mana friendship... ippatiki 6 years ayipoyayi. 🫶</p>
 
-        <p class="small">
-            7th class nunchi start ayina mana friendship...
-            ippatiki 6 years ayipoyayi! 🫶
-        </p>
-
-        <button onclick="document.getElementById('story').scrollIntoView()">
-            Open Your Surprise 💌
-        </button>
-    </div>
+<button onclick="document.getElementById('story').scrollIntoView()">Open Your Surprise 💌</button>
+</div>
 </section>
 
-
-<!-- PAGE 2 -->
 <section id="story">
-    <div class="card">
+<div class="card">
+<h2>6 Years of Us 🌸</h2>
 
-        <h2>6 Years of Us 🥹💗</h2>
+<div class="timeline">
 
-        <p>
-            [IKKADA NEE OWN STORY RAYI]
-        </p>
+<div class="point">
+<b>🌱 7th Class</b><br>
+[WRITE HOW YOUR FRIENDSHIP STARTED]
+</div>
 
-        <p>
-            7th class lo start ayina mana friendship...
-            enni godavalu vachina, enni misunderstandings vachina,
-            okarikokaram give up cheyyaledu. 🥹
-        </p>
+<div class="point">
+<b>😂 The Fights</b><br>
+[WRITE ABOUT YOUR FIGHTS]
+</div>
 
-        <p>
-            [IKKADA INKA NEE OWN MEMORIES / MATTER ADD CHEYYI]
-        </p>
+<div class="point">
+<b>🤍 The Patch-ups</b><br>
+[WRITE HOW YOU ALWAYS CAME BACK]
+</div>
 
-        <button onclick="document.getElementById('photo').scrollIntoView()">
-            One Special Picture 📸
-        </button>
+<div class="point">
+<b>🎂 Today</b><br>
+Still annoying each other after 6 years. 😂
+</div>
 
-    </div>
+</div>
+
+<button onclick="document.getElementById('photo').scrollIntoView()">One Special Picture 📸</button>
+
+</div>
 </section>
 
-
-<!-- PAGE 3 -->
 <section id="photo">
+<div class="card">
+<h2>One Picture. Six Years. Countless Memories. 💗</h2>
 
-    <h2>One Picture... But So Many Memories 💗</h2>
+<img class="photo" src="photo1.jpg">
 
-    <!-- PHOTO WILL BE ADDED HERE -->
-    <div class="card">
-        <p>
-            📸 Our one special picture
-        </p>
+<p>
+We don't have hundreds of pictures...
+but we have six years worth of memories.
+</p>
 
-        <p>
-            [PHOTO DESCRIPTION / MEMORY IKKADA RAYI]
-        </p>
-    </div>
+<button onclick="document.getElementById('letter').scrollIntoView()">A Letter 💌</button>
 
-    <button onclick="document.getElementById('names').scrollIntoView()">
-        Our Legendary Names 😂
-    </button>
-
+</div>
 </section>
 
+<section id="letter">
+<div class="card">
+<h2>Dear Jashuu... 💗</h2>
 
-<!-- PAGE 4 -->
+<p>[WRITE YOUR OWN LETTER HERE]</p>
+
+<p>[CONTINUE YOUR LETTER HERE]</p>
+
+<button onclick="document.getElementById('names').scrollIntoView()">Something Funny 😂</button>
+
+</div>
+</section>
+
 <section id="names">
+<div class="card">
+<h2>Jashuu • Tingarii • Jashuluu 😂</h2>
 
-    <div class="card">
+<div class="grid">
 
-        <h2>Jashuu... Tingarii... Jashuluu 😂💗</h2>
+<div class="box" onclick="toggle(this)">
+💜 Jashuu
+<div class="hide">[WRITE SOMETHING CUTE]</div>
+</div>
 
-        <p>
-            Actual name <b>Jaswitha</b> ayina...
-            nenu ninnu okkasari Jashuu ani,
-            okkasari Tingarii ani,
-            okkasari Jashuluu ani pilustha 😂
-        </p>
+<div class="box" onclick="toggle(this)">
+😂 Tingarii
+<div class="hide">[WRITE A FUNNY MEMORY]</div>
+</div>
 
-        <p>
-            Mana conversations lo ee names ki
-            separate history undhi asalu 😭😂
-        </p>
+<div class="box" onclick="toggle(this)">
+🤍 Jashuluu
+<div class="hide">[WRITE AN INSIDE JOKE]</div>
+</div>
 
-        <p>
-            [IKKADA MEERU DAILY USE CHESE FUNNY DIALOGUES / NICKNAMES RAYI]
-        </p>
+</div>
 
-        <button onclick="document.getElementById('final').scrollIntoView()">
-            One Last Thing 💌
-        </button>
+<button onclick="document.getElementById('gifts').scrollIntoView()">Open Gifts 🎁</button>
 
-    </div>
-
+</div>
 </section>
 
+<section id="gifts">
+<div class="card">
+<h2>Gift Time 🎁</h2>
 
-<!-- FINAL PAGE -->
+<div class="grid">
+
+<div class="box" onclick="toggle(this)">
+🍫 Chocolate
+<div class="hide">[YOUR MESSAGE]</div>
+</div>
+
+<div class="box" onclick="toggle(this)">
+💌 Letter
+<div class="hide">This website is one of your gifts. 💗</div>
+</div>
+
+<div class="box" onclick="toggle(this)">
+🎀 Surprise
+<div class="hide">Open this in real life. 😉</div>
+</div>
+
+</div>
+
+<button onclick="document.getElementById('final').scrollIntoView()">One Last Thing ❤️</button>
+
+</div>
+</section>
+
 <section id="final">
+<div class="card">
 
-    <div class="card">
+<div style="font-size:70px;">🎉💗</div>
 
-        <div style="font-size:65px;">💗🥹🎂</div>
+<h1>Happy Birthday, Tingarii!</h1>
 
-        <h2>Happy Birthday, Jashuluu!</h2>
+<p>[WRITE YOUR FINAL MESSAGE HERE]</p>
 
-        <p>
-            [IKKADA NEE FINAL HEARTFELT MESSAGE RAYI]
-        </p>
+<p>No matter how many fights we have...</p>
 
-        <p>
-            No matter how many fights we have,
-            how many times we irritate each other,
-            or how many times we say "inka maatladanu" 😂...
-        </p>
+<p>No matter how many times we say "inka maatladanu" 😂...</p>
 
-        <p>
-            <b>
-            6 years of friendship and still going... 🫶
-            </b>
-        </p>
+<h2>We never gave up. ❤️</h2>
 
-        <p>
-            Stay happy, stay crazy, and always be the same
-            Tingarii I know. 😂💗
-        </p>
+<p>6 years down. Forever to go. 🫶</p>
 
-        <div style="font-size:35px;">
-            🫶💗✨🎂✨💗🫶
-        </div>
+<p style="font-size:26px;">💗✨🎂✨💗</p>
 
-        <p class="small">
-            — From your forever irritating friend 😂❤️
-        </p>
-
-    </div>
-
+</div>
 </section>
 
-
-<!-- FLOATING HEARTS -->
 <script>
-function createHeart() {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💗";
+const text="Happy Birthday, Jashuluu! 💗";
+let i=0;
+function type(){
+if(i<text.length){
+document.getElementById("typing").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,70);
+}
+}
+type();
 
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-
-    document.body.appendChild(heart);
-
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
+function openGate(){
+const ans=document.getElementById("pass").value.trim().toLowerCase();
+if(ans==="7th"||ans==="7"){
+document.getElementById("gate").style.display="none";
+}else{
+document.getElementById("err").innerHTML="Hint: Number only. 😉";
+}
 }
 
-setInterval(createHeart, 700);
+function toggle(el){
+const d=el.querySelector("div");
+d.classList.toggle("hide");
+}
+
+function heart(){
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML=Math.random()>.5?"💗":"✨";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(4+Math.random()*4)+"s";
+document.body.appendChild(h);
+setTimeout(()=>h.remove(),8000);
+}
+setInterval(heart,400);
 </script>
 
 </body>
-</html>
+</html>`}
